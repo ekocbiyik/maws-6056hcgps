@@ -50,18 +50,22 @@ public class MawsController {
     private Label lblExternalTemp;
     @FXML
     private TextArea txtConsole;
+    
     private final double centerX = 175;
     private final double centerY = 175;
     private final double radius = 150;
-    private GraphicsContext gc;
 
-    private Map<String, String> infoMap = new HashMap<>();
-    private Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> updateFields()));
+    private Timeline timeline;
+    private GraphicsContext gc;
+    private Map<String, String> infoMap;
 
     @FXML
     public void initialize() {
-        drawCompass();
+        infoMap = new HashMap<>();
+        timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> updateFields()));
         timeline.setCycleCount(Timeline.INDEFINITE);
+        
+        drawCompass();
     }
 
     private void drawCompass() {
